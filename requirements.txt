@@ -7,3 +7,4 @@ streamlit-elements
 pandas
 numpy
 st-supabase-connection
+plotly.express
