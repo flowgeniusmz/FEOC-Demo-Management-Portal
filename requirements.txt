@@ -1,0 +1,9 @@
+streamlit
+openai
+langchain
+supabase
+st-login-form
+streamlit-elements
+pandas
+numpy
+st-supabase-connection
