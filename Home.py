@@ -46,7 +46,7 @@ else:
                 exp11 = st.expander("New Certificate", expanded=True)
                 with exp11:
                     st.write("**Instructions**")
-                    st.write("Select this option to create a new FEOC and use the setup wizard to provide the necessary information.")
+                    st.write("Select this option to create a new FEOC providing the necessary information.")
                     st.button("Create New Certificate", key="btnNewCertificate", type="primary", use_container_width=True)
             container12 = st.container()
             with container12:
