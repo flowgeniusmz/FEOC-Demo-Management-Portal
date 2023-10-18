@@ -8,3 +8,5 @@ pandas
 numpy
 st-supabase-connection
 plotly.express
+streamlit-modal
+extra-streamlit-components
