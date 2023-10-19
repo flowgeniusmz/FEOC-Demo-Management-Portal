@@ -14,3 +14,4 @@ def get_loginform():
         st.error("Not Authenticated")
 
 #https://app.supabase.com/project/rbaawqpeyigwmzukrmvc/editor/28594
+#https://docs.streamlit.io/knowledge-base/tutorials/databases/supabase#create-a-supabase-database
