@@ -1,6 +1,9 @@
 import streamlit as st
 from  functions.login import get_loginform
 from functions.pagesetup import set_title
+from streamlit_modal import Modal
+import streamlit.components.v1 as components
+
 
 st.set_page_config(layout="wide")
 
@@ -27,6 +30,26 @@ else:
         st.markdown("""```
                     By choosing to back reduced emission products, you set a commendable standard. Every purchase you make takes us one step closer to a cleaner, better world.
                     """)
+        modal = Modal("Request a Demo Modal", key="mdlDemoRequest")
+        demo_modal = st.button("Request Demo", key="btnDemoRequest", type="primary", use_container_width=True)
+        if demo_modal:
+            modal.open()
+        if modal.is_open():
+            with modal.container():
+                st.write("Text goes here")
+
+                html_string = '''
+                <h1>HTML string in RED</h1>
+
+                <script language="javascript">
+                document.querySelector("h1").style.color = "red";
+                </script>
+                '''
+                components.html(html_string)
+
+                st.write("Some fancy text")
+                value = st.checkbox("Check me")
+                st.write(f"Checkbox checked: {value}")
         st.divider()
         col01, col02 = st.columns(2)
         with col01:
@@ -73,4 +96,3 @@ else:
                     st.write("**Instructions**")
                     st.write("Select this option to manage and view the audit history for one or more FEOC.")
                     st.button("Manage Audit History", key="btnAuditHistory", type="primary", use_container_width=True)
-
