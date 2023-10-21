@@ -10,3 +10,5 @@ st-supabase-connection
 plotly.express
 streamlit-modal
 extra-streamlit-components
+hydralit
+hydralit_components
