@@ -3,7 +3,7 @@ from  functions.login import get_loginform
 from functions.pagesetup import set_title, set_page_overview
 import extra_streamlit_components as stx
 from functions.audit_data import load_audit_data
-from functions.supabase_queries import run_query, supabase_get_audit
+from functions.supabase_queries import run_query, supabase_get_audit, supabase_get_notifications
 from functions.filter_dataframe import filter_dataframe
 import os
 import pandas as pd
@@ -30,7 +30,8 @@ else:
         tab_list = [
             stx.TabBarItemData(id=1, title="Audit Log", description="View auditable activity"),
             stx.TabBarItemData(id=2, title="Audit AI", description="Use chat AI for audit"),
-            stx.TabBarItemData(id=3, title="Other Audit", description="Miscellaneous audit actions")
+            stx.TabBarItemData(id=3, title="Other Audit", description="Miscellaneous audit actions"),
+            stx.TabBarItemData(id=3, title="Notifications", description="Notification Log")
         ]
         tab_chosen_id = stx.tab_bar(data=tab_list, default=1)
         
@@ -71,7 +72,11 @@ else:
                     response = pandas_df_agent.run(st.session_state.messages, callbacks=[st_cb])
                     st.session_state.messages.append({"role": "assistant", "content": response})
                     st.write(response)
-            
+        elif tab_chosen_id=="4":
+            st.markdown("#### Notification Log")
+            df4 = supabase_get_notifications()
+            df4Filter = filter_dataframe(df4)
+            df4Display = st.dataframe(df4Filter, use_container_width=True, hide_index=False)
 
         else:
             st.write("Unknown")
