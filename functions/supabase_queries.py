@@ -32,7 +32,7 @@ def supabase_get_notifications():
 
     #Perform Query
     rows_notifications = con_notifications.query("*", table="notifications", ttl="10m").execute()
-    data_notifications = rows.data
+    data_notifications = rows_notifications.data
 
     dfNotifications = pd.DataFrame(data_notifications)
 
