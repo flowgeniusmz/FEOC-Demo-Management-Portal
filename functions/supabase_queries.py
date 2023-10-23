@@ -26,6 +26,18 @@ def supabase_get_audit():
     dfAudit = pd.DataFrame(data_audit)
     return dfAudit
 
+def supabase_get_notifications():
+    #Initialize Connection
+    con = st.experimental_connection("supabase", type=SupabaseConnection)
+
+    #Perform Query
+    rows = con.query("*", table="notifications", ttl="10m").execute()
+    data = rows.data
+
+    dfNotifications = pd.DataFrame(data)
+
+    return dfNotifications
+
 ### Alt using python library
 
 
