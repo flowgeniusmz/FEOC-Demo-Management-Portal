@@ -31,7 +31,7 @@ else:
             stx.TabBarItemData(id=1, title="Audit Log", description="View auditable activity"),
             stx.TabBarItemData(id=2, title="Audit AI", description="Use chat AI for audit"),
             stx.TabBarItemData(id=3, title="Other Audit", description="Miscellaneous audit actions"),
-            stx.TabBarItemData(id=3, title="Notifications", description="Notification Log")
+            stx.TabBarItemData(id=4, title="Notifications", description="Notification Log")
         ]
         tab_chosen_id = stx.tab_bar(data=tab_list, default=1)
         
@@ -72,6 +72,7 @@ else:
                     response = pandas_df_agent.run(st.session_state.messages, callbacks=[st_cb])
                     st.session_state.messages.append({"role": "assistant", "content": response})
                     st.write(response)
+                    
         elif tab_chosen_id=="4":
             st.markdown("#### Notification Log")
             df4 = supabase_get_notifications()
