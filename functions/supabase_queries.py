@@ -31,7 +31,7 @@ def supabase_get_notifications():
     con_notifications = st.experimental_connection("supabase", type=SupabaseConnection)
 
     #Perform Query
-    rows_notifications = con.query("*", table="notifications", ttl="10m").execute()
+    rows_notifications = con_notifications.query("*", table="notifications", ttl="10m").execute()
     data_notifications = rows.data
 
     dfNotifications = pd.DataFrame(data_notifications)
