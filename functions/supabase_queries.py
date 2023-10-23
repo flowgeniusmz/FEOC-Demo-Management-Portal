@@ -28,13 +28,13 @@ def supabase_get_audit():
 
 def supabase_get_notifications():
     #Initialize Connection
-    con = st.experimental_connection("supabase", type=SupabaseConnection)
+    con_notifications = st.experimental_connection("supabase", type=SupabaseConnection)
 
     #Perform Query
-    rows = con.query("*", table="notifications", ttl="10m").execute()
-    data = rows.data
+    rows_notifications = con.query("*", table="notifications", ttl="10m").execute()
+    data_notifications = rows.data
 
-    dfNotifications = pd.DataFrame(data)
+    dfNotifications = pd.DataFrame(data_notifications)
 
     return dfNotifications
 
